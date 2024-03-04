@@ -10,17 +10,33 @@ namespace Aula02RH
         {
            Funcionario func = new Funcionario();
 
-           func.Id = 10;
-           func.Nome = "Neymar";
-           func.Cpf = "12345678910";
-           func.Datadeadimissao = DateTime.Parse("01/01/2000");
-           func.Salario = 10000.00M;
-           func.Tipofuncionario = TipofuncionarioEnum.clt;
+           Console.WriteLine("Digite o Id do Funcionario:");
+           func.Id = int.Parse(Console.ReadLine());
+           
+           Console.WriteLine("Digite o nome do funcionairo:");
+           func.Nome = Console.ReadLine();
+           
+           Console.WriteLine("Digite o CPF do Funcionario:");
+           func.Cpf = Console.ReadLine();
+           
+           Console.WriteLine("Data de Adimissâo:");
+           func.Datadeadimissao = DateTime.Parse(Console.ReadLine());
+           
+           Console.WriteLine("Digite o salario:");
+           func.Salario = decimal.Parse(Console.ReadLine());
+           
+           Console.WriteLine("Qual tipo de funcionario: ");
+           int opcao = int.Parse(Console.ReadLine());
 
-          string mensagem = func.ExibirPeriodoExeperiencia();
-          Console.WriteLine("==============================");
-          Console.WriteLine(mensagem);
-          Console.WriteLine("==============================");
+           //operador ternario
+           func.Tipofuncionario = (opcao == 1) ? TipofuncionarioEnum.clt : TipofuncionarioEnum.aprendiz;
+
+                func.Reajustarsalario();
+                decimal valorDesconoVT = func.CalcularDescontoVT(6);
+
+           Console.WriteLine("=====================================");
+           Console.WriteLine($"O Salario Reajustado é {func.Salario}.\n");
+           Console.WriteLine($"O desconto do VT é{valorDesconoVT} .\n");
            
 
     }
